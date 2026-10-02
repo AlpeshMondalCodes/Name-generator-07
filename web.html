@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NAME GENERATOR</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    background:#f3f5f7;
+    color:#111820;
+}
+
+/* HEADER */
+
+header{
+    height:72px;
+    background:#fff;
+    border-bottom:1px solid #dfe3e7;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#1479ff;
+}
+
+.badge{
+    font-size:10px;
+    font-weight:800;
+    color:#68737d;
+    border:1px solid #dce1e5;
+    padding:8px 12px;
+    border-radius:20px;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:65px 20px 35px;
+}
+
+.hero small{
+    color:#1479ff;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.hero h1{
+    font-size:clamp(42px,9vw,76px);
+    line-height:1;
+    letter-spacing:-3px;
+    margin:14px 0;
+}
+
+.hero h1 span{
+    color:#1479ff;
+}
+
+.hero p{
+    max-width:620px;
+    margin:auto;
+    color:#68737d;
+    line-height:1.7;
+}
+
+/* GENERATOR */
+
+.generator{
+    width:min(900px,92%);
+    margin:20px auto;
+    padding:20px;
+    background:#fff;
+    border:1px solid #dfe3e7;
+    border-radius:18px;
+    box-shadow:0 10px 35px rgba(0,0,0,.06);
+}
+
+.inputRow{
+    display:flex;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    min-width:0;
+    padding:17px;
+    border-radius:11px;
+    border:1px solid #d4dbe1;
+    background:#f8fafb;
+    outline:none;
+    font-size:16px;
+}
+
+input:focus{
+    border-color:#1479ff;
+}
+
+.generate{
+    border:0;
+    border-radius:11px;
+    padding:0 24px;
+    background:#1479ff;
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.generate:hover{
+    background:#0968df;
+}
+
+/* FILTERS */
+
+.filters{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:14px;
+}
+
+.filter{
+    padding:9px 14px;
+    border-radius:9px;
+    border:1px solid #dfe3e7;
+    background:#f5f7f9;
+    color:#66727d;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.filter.active{
+    background:#111820;
+    color:#fff;
+    border-color:#111820;
+}
+
+/* RESULTS */
+
+.resultHeader{
+    width:min(1050px,92%);
+    margin:45px auto 15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.resultHeader h2{
+    font-size:21px;
+}
+
+.count{
+    color:#78838e;
+    font-size:13px;
+}
+
+.grid{
+    width:min(1050px,92%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(245px,1fr));
+    gap:12px;
+    padding-bottom:70px;
+}
+
+.card{
+    background:#fff;
+    border:1px solid #dfe3e7;
+    border-radius:14px;
+    padding:17px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    transition:.2s;
+}
+
+.card:hover{
+    border-color:#1479ff;
+    transform:translateY(-2px);
+}
+
+.name{
+    font-size:16px;
+    font-weight:900;
+    word-break:break-all;
+}
+
+.category{
+    margin-top:5px;
+    color:#1479ff;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.copy{
+    flex-shrink:0;
+    border:0;
+    border-radius:8px;
+    padding:9px 12px;
+    background:#111820;
+    color:#fff;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.copy:hover{
+    background:#1479ff;
+}
+
+.empty{
+    grid-column:1/-1;
+    text-align:center;
+    color:#8a949e;
+    padding:55px 20px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111820;
+    color:#89939d;
+    text-align:center;
+    padding:24px;
+    font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .inputRow{
+        flex-direction:column;
+    }
+
+    .generate{
+        padding:15px;
+    }
+
+    .hero{
+        padding-top:50px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        NAME <span>GENERATOR</span>
+    </div>
+
+    <div class="badge">
+        GAMER ID ENGINE
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <small>CREATE YOUR IDENTITY</small>
+
+    <h1>
+        NAME <span>GENERATOR</span>
+    </h1>
+
+    <p>
+        Enter your name and discover clean, unique and
+        professional gamer usernames made around your name.
+    </p>
+
+</section>
+
+
+<section class="generator">
+
+    <div class="inputRow">
+
+        <input
+            id="nameInput"
+            type="text"
+            placeholder="Enter your name • e.g. Hidu"
+            autocomplete="off"
+        >
+
+        <button
+            class="generate"
+            onclick="generateNames()"
+        >
+            Generate
+        </button>
+
+    </div>
+
+
+    <div class="filters">
+
+        <button
+            class="filter active"
+            onclick="setFilter('all',this)"
+        >
+            All
+        </button>
+
+        <button
+            class="filter"
+            onclick="setFilter('og',this)"
+        >
+            OG
+        </button>
+
+        <button
+            class="filter"
+            onclick="setFilter('pro',this)"
+        >
+            Pro
+        </button>
+
+        <button
+            class="filter"
+            onclick="setFilter('tactical',this)"
+        >
+            Tactical
+        </button>
+
+        <button
+            class="filter"
+            onclick="setFilter('dark',this)"
+        >
+            Dark
+        </button>
+
+        <button
+            class="filter"
+            onclick="setFilter('clean',this)"
+        >
+            Clean
+        </button>
+
+    </div>
+
+</section>
+
+
+<div class="resultHeader">
+
+    <h2>Generated Names</h2>
+
+    <div
+        class="count"
+        id="count"
+    >
+        0 names
+    </div>
+
+</div>
+
+
+<div
+    class="grid"
+    id="results"
+>
+
+    <div class="empty">
+        Enter your name to generate usernames.
+    </div>
+
+</div>
+
+
+<footer>
+    NAME GENERATOR • Professional Gamer Identity Engine
+</footer>
+
+
+<script>
+
+let currentFilter = "all";
+
+
+/* NAME COLLECTIONS */
+
+const ogNames = [
+    "VII",
+    "V7",
+    "X7",
+    "47",
+    "77",
+    "99",
+    "IV",
+    "IX",
+    "VX",
+    "404",
+    "808",
+    "001"
+];
+
+const proNames = [
+    "Apex",
+    "Prime",
+    "Vanta",
+    "Vertex",
+    "Zenith",
+    "Titan",
+    "Elite",
+    "Clutch",
+    "Striker",
+    "Vector",
+    "Forge",
+    "Pulse",
+    "Drift",
+    "Surge",
+    "Rival"
+];
+
+const tacticalNames = [
+    "Rogue",
+    "Recon",
+    "Delta",
+    "Spectre",
+    "Hawk",
+    "Bravo",
+    "Ghost",
+    "Zero",
+    "Ops",
+    "Strike",
+    "Viper",
+    "Stealth"
+];
+
+const darkNames = [
+    "Nox",
+    "Noir",
+    "Wraith",
+    "Raven",
+    "Shade",
+    "Dusk",
+    "Phantom",
+    "Frost",
+    "Eclipse",
+    "Obsidian",
+    "Venom"
+];
+
+const cleanNames = [
+    "Zen",
+    "Nova",
+    "Axis",
+    "Flux",
+    "Sync",
+    "Rise",
+    "Mode",
+    "Peak",
+    "Arc",
+    "Core",
+    "Era",
+    "Wave"
+];
+
+
+/* CLEAN INPUT */
+
+function cleanName(value){
+
+    return value
+        .trim()
+        .replace(/\s+/g,"")
+        .replace(/[^a-zA-Z0-9]/g,"");
+
+}
+
+
+/* ADD UNIQUE NAME */
+
+function addName(list,name,type){
+
+    if(
+        name &&
+        !list.some(item => item.name === name)
+    ){
+
+        list.push({
+            name:name,
+            type:type
+        });
+
+    }
+
+}
+
+
+/* RANDOM */
+
+function random(array){
+
+    return array[
+        Math.floor(
+            Math.random()*array.length
+        )
+    ];
+
+}
+
+
+/* GENERATOR */
+
+function generateNames(){
+
+    const input =
+        document.getElementById("nameInput").value;
+
+    const base =
+        cleanName(input);
+
+    if(!base){
+
+        document.getElementById("results").innerHTML =
+        `
+        <div class="empty">
+            Enter your name first.
+        </div>
+        `;
+
+        document.getElementById("count").innerText =
+            "0 names";
+
+        return;
+    }
+
+
+    let list = [];
+
+
+    /*
+       IMPORTANT:
+       Every generated username STARTS
+       with the user's original name.
+       No reversed names.
+    */
+
+
+    /* ORIGINAL */
+
+    addName(list,base,"clean");
+
+
+    /* OG */
+
+    ogNames.forEach(word=>{
+
+        addName(
+            list,
+            base + word,
+            "og"
+        );
+
+    });
+
+
+    /* PRO */
+
+    proNames.forEach(word=>{
+
+        addName(
+            list,
+            base + word,
+            "pro"
+        );
+
+    });
+
+
+    /* TACTICAL */
+
+    tacticalNames.forEach(word=>{
+
+        addName(
+            list,
+            base + word,
+            "tactical"
+        );
+
+    });
+
+
+    /* DARK */
+
+    darkNames.forEach(word=>{
+
+        addName(
+            list,
+            base + word,
+            "dark"
+        );
+
+    });
+
+
+    /* CLEAN */
+
+    cleanNames.forEach(word=>{
+
+        addName(
+            list,
+            base + word,
+            "clean"
+        );
+
+    });
+
+
+    /*
+       SMART COMBINATIONS
+    */
+
+    for(let i=0;i<35;i++){
+
+        const type =
+            Math.floor(Math.random()*5);
+
+        if(type === 0){
+
+            addName(
+                list,
+                base + random(proNames),
+                "pro"
+            );
+
+        }
+
+        if(type === 1){
+
+            addName(
+                list,
+                base + random(darkNames),
+                "dark"
+            );
+
+        }
+
+        if(type === 2){
+
+            addName(
+                list,
+                base + random(tacticalNames),
+                "tactical"
+            );
+
+        }
+
+        if(type === 3){
+
+            addName(
+                list,
+                base + random(cleanNames),
+                "clean"
+            );
+
+        }
+
+        if(type === 4){
+
+            addName(
+                list,
+                base + random(ogNames),
+                "og"
+            );
+
+        }
+
+    }
+
+
+    render(list);
+
+}
+
+
+/* DISPLAY */
+
+function render(list){
+
+    const results =
+        document.getElementById("results");
+
+    const filtered =
+        list.filter(item =>
+            currentFilter === "all" ||
+            item.type === currentFilter
+        );
+
+
+    if(filtered.length === 0){
+
+        results.innerHTML =
+        `
+        <div class="empty">
+            No names found in this category.
+        </div>
+        `;
+
+        document.getElementById("count").innerText =
+            "0 names";
+
+        return;
+    }
+
+
+    results.innerHTML = "";
+
+
+    filtered.forEach(item=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className = "card";
+
+
+        card.innerHTML =
+        `
+        <div>
+
+            <div class="name">
+                ${item.name}
+            </div>
+
+            <div class="category">
+                ${item.type}
+            </div>
+
+        </div>
+
+        <button class="copy">
+            Copy
+        </button>
+        `;
+
+
+        card
+        .querySelector(".copy")
+        .onclick = function(){
+
+            navigator.clipboard
+                .writeText(item.name);
+
+            this.innerText = "Copied";
+
+            setTimeout(()=>{
+                this.innerText = "Copy";
+            },1000);
+
+        };
+
+
+        results.appendChild(card);
+
+    });
+
+
+    document.getElementById("count").innerText =
+        filtered.length + " names";
+
+}
+
+
+/* FILTER */
+
+function setFilter(type,button){
+
+    currentFilter = type;
+
+
+    document
+        .querySelectorAll(".filter")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    if(
+        document
+        .getElementById("nameInput")
+        .value
+        .trim()
+    ){
+
+        generateNames();
+
+    }
+
+}
+
+
+/* ENTER KEY */
+
+document
+    .getElementById("nameInput")
+    .addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                generateNames();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>
